@@ -24,11 +24,12 @@ export default function Sidebar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+ 
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full px-3 py-4 overflow-y-auto bg-black text-white dark:bg-gray-800">
       <Link to="/" className="flex items-center mb-10 mt-6">
-        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Paul Portfolio</span>
+        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Paul's Portfolio</span>
       </Link>
       <nav className="flex-1 space-y-2">
         <ul>
@@ -38,7 +39,7 @@ export default function Sidebar() {
               onClick={() => toggleMobileMenu()}
                 to={route.path}
                 className={`flex items-center p-2 text-slate-200 rounded-lg transition dark:text-black hover:bg-gray-100 hover:text-black dark:hover:bg-gray-700 group ${
-                  location.pathname === route.path ? 'bg-gray-100 dark:bg-gray-700 text-black line-through' : ''
+                  location.pathname === route.path ? 'bg-gray-800 dark:bg-gray-700 text-black line-through decoration-2 decoration-gray-50' : ''
                 }`}
               >
                 <route.icon className="w-5 h-5 mr-3" />

@@ -8,11 +8,11 @@ export default function HomePage() {
       <div className="mb-12 lg:mb-16 z-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-black">
           My Name is <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-800">Ifeoluwa Agbogun</span>
+          <span className="cool-text text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-800">Ifeoluwa Agbogun</span>
           <span className="animate-pulse">...</span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl mt-4 text-gray-600">
-          Web Developer based in Nigeria
+          <span className='font-bold'>Web Developer</span> based in Nigeria
         </p>
         <button className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-800 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform ease-out">
             <Link to={'/contact'}>
