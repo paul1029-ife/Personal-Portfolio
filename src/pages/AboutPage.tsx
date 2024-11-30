@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import myImg from "../assets/myimg.jpg";
 import {
   MapPin,
@@ -8,11 +9,30 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
-
+import gsap from "gsap";
 const About = () => {
+  const imageRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.fromTo(
+      imageRef.current,
+      { opacity: 0, rotation: -15, scale: 0.8 },
+      { 
+        opacity: 1, 
+        rotation: 0, 
+        scale: 1, 
+        duration: 1,
+        ease: 'back.out(1.7)'
+      },
+      0.6
+    );
+  })
+
   const skills = [
     "React.js",
+    "Next js",
     "Tailwind CSS",
+    "Mongodb",
     "Python",
     "JavaScript",
     "HTML/CSS",
@@ -39,6 +59,7 @@ const About = () => {
               <div className="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-20 animate-pulse" />
               <img
                 src={myImg}
+                ref={imageRef}
                 alt="Agbogun Paul Ifeoluwa"
                 className="rounded-full w-64 h-64 object-cover mx-auto relative z-10 border-4 border-white shadow-xl"
               />
@@ -104,7 +125,8 @@ const About = () => {
             <h2 className="text-2xl font-bold mb-4">About Me</h2>
             <p className="text-gray-700">
               Hello there! I'm Paul, a 17-year-old Computer Science student at
-              the University of Lagos, and a passionate front-end developer. My
+              the University of Lagos, and a passionate front-end developer. 
+              I bring out the light in your project. My
               journey in tech started 2020 with a successful hackathon project
               that ranked in the top 20 at an MTN-organized event.
             </p>
@@ -139,7 +161,7 @@ const About = () => {
         <div className="bg-white rounded-xl shadow-sm text-center p-8">
           <h2 className="text-2xl font-bold mb-4">Project Experience</h2>
           <p className="text-gray-700 max-w-2xl mx-auto">
-            From quiz apps to e-commerce platforms, I have built a range of
+            From AI quiz apps to full stack AI leaarning platforms, I have built a range of
             projects that have helped me grow as a developer. I am eager to
             continue learning and building new projects that solve real-world
             problems.
