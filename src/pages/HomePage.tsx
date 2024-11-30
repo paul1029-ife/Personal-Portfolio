@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import myImg from '../assets/myimg.jpg';
+import Type from '../components/Type';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -236,9 +236,9 @@ const HomePage: React.FC = () => {
         </h1>
         <p 
           ref={subtitleRef} 
-          className="text-base sm:text-lg md:text-xl mt-4 text-gray-600"
+          className="text-base sm:text-lg md:text-xl mt-4 text-gray-600 flex gap-3"
         >
-          <span className='font-bold'>Web Developer</span> based in Nigeria
+          <span className='font-bold'><Type /></span> <p>based in Nigeria</p>
         </p>
         <button 
           ref={buttonRef}
@@ -265,13 +265,7 @@ const HomePage: React.FC = () => {
 
       {/* Image Section */}
       <div className="absolute top-28 right-8 lg:top-24 lg:right-16">
-        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-          <img
-            ref={imageRef}
-            src={myImg}
-            alt="Ifeoluwa Agbogun"
-            className="w-full h-full rounded-full object-cover shadow-lg hover:translate-x-5"
-          />
+        <div className="relative w-64 h-64 lg:w-96 lg:h-96">
           {/* Background abstract shapes with GSAP animation refs */}
           <div 
             ref={el => {
