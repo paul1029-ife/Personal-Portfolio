@@ -1,7 +1,14 @@
-
 import { useEffect, useRef, useState } from 'react';
 
-const useSpotlightEffect = (config = {}) => {
+interface SpotlightConfig {
+  spotlightSize?: number;
+  spotlightIntensity?: number;
+  fadeSpeed?: number;
+  glowColor?: string;
+  pulseSpeed?: number;
+}
+
+const useSpotlightEffect = (config: SpotlightConfig = {}) => {
   const {
     spotlightSize = 200,
     spotlightIntensity = 0.8,
@@ -10,28 +17,33 @@ const useSpotlightEffect = (config = {}) => {
     pulseSpeed = 2000,
   } = config;
 
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const spotlightPos = useRef({ x: 0, y: 0 });
   const targetPos = useRef({ x: 0, y: 0 });
-  const animationFrame = useRef(null);
+  const animationFrame = useRef<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     ctxRef.current = ctx;
 
     const resizeCanvas = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    const lerp = (start, end, factor) => {
+    const lerp = (start: number, end: number, factor: number): number => {
       return start + (end - start) * factor;
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       targetPos.current = { x: e.clientX, y: e.clientY };
       setIsHovered(true);
     };
@@ -62,7 +74,7 @@ const useSpotlightEffect = (config = {}) => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Calculate pulse effect
-      const pulseScale = 
+      const pulseScale =
         1 + 0.1 * Math.sin((Date.now() / pulseSpeed) * Math.PI * 2);
       const currentSpotlightSize = spotlightSize * pulseScale;
 
@@ -128,7 +140,7 @@ const useSpotlightEffect = (config = {}) => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      document.addEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
       if (animationFrame.current) {
         cancelAnimationFrame(animationFrame.current);
