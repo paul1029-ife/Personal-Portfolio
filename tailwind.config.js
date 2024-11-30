@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inconsolata: ['Inconsolata', 'monospace'], // Add your font here
+      },
+    },
   },
   plugins: [],
 }

@@ -27,7 +27,7 @@ export default function Sidebar() {
  
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full px-3 py-4 overflow-y-auto bg-black text-white dark:bg-gray-800">
+    <div className="font-inconsolata flex flex-col h-full px-3 py-4 overflow-y-auto bg-black text-white dark:bg-gray-800">
       <Link to="/" className="flex items-center mb-10 mt-6">
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Paul's Portfolio</span>
       </Link>
@@ -96,7 +96,7 @@ export default function Sidebar() {
       </aside>
 
       {/* Main content */}
-      <div className="lg:ml-64 p-4">
+      <div className="lg:ml-64 p-4 font-inconsolata">
         <Outlet />
       </div>
     </div>
